@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device‑width, initial‑scale=1.0" />
+  <title>Cinematic 3D Photo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0a0a0f;
+      color: #fff;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 320px;
+      height: 480px;
+      perspective: 1000px;
+    }
+
+    .photo-card {
+      width: 150%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve‑3d;
+      transition: transform 0.1s ease-out;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,255,0.3),
+                  0 0 0 1px rgba(100,100,255,0.2);
+                  margin-left:5px;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1) brightness(1.05);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.6)
+      );
+      pointer-events: none;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      text-shadow: 0 0 8px rgba(0,0,255,0.6);
+      letter-spacing: 0.5px;
+      mix-blend-mode: difference;
+    }
+
+    .shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      transform: rotate(45deg);
+      pointer-events: none;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+    }
+    .btn{
+      margin-top: 700px;
+      transform: translatex(-260px);
+  padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg,gold,orange);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px gold;
+  margin-top:700px;
+}
+  .btm{
+    margin-top: 700px;
+    transform: translatex(-250px);
+    padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg,gold,orange);
+  border: none;
+  border-radius: 12px;
+
+  box-shadow: 0 0 15px gold;
+  margin-top:700px;
+  }
+  h5{
+    margin-bottom:650px;
+    transform:translatex(200px);
+    font-size:20px;
+    font-family:Georgia;
+    background: linear-gradient(to right,white,grey);
+    -webkit-text-fill-color:transparent;
+    -webkit-background-clip:text;
+  }
+    
+  </style>
+</head>
+<body>
+<h5>touch photo</h5>
+  <div class="container">
+    <div class="photo-card" id="card">
+      <div class="photo">
+        <img src="jebash.jpg" alt="Cinematic Photo" />
+      </div>
+      <div class="overlay"></div>
+      <div class="title">3D Frame </div>
+      <div class="shine"></div>
+    </div>
+  </div>
+  <button class="btn"onclick="backpage()">back</button>
+<button class="btm"onclick="goNext()">next</button>
+   <a href="page4.html">
+     <button>next</button>
+   </a>
+  <script>
+    const card = document.getElementById("card");
+    const shine = card.querySelector(".shine");
+
+    function updateCardStyle(e) {
+      const { left, top, width, height } = card.getBoundingClientRect();
+
+      const x = e.clientX - left;
+      const y = e.clientY - top;
+
+      const centerX = width / 2;
+      const centerY = height / 2;
+
+      // Rotate X (up/down), Y (left/right) based on mouse
+      const rotateY = (x - centerX) / 20;
+      const rotateX = (centerY - y) / 20;
+
+      card.style.transform = `
+        perspective(800px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+      `;
+
+      // Shine follows the mouse
+      shine.style.left = x - 40 + "px";
+      shine.style.top = y - 20 + "px";
+    }
+
+    card.addEventListener("mousemove", updateCardStyle);
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = `
+        perspective(800px)
+        rotateX(0deg)
+        rotateY(0deg)
+      `;
+    });
+    src="https://source.unsplash.com/random/400x600/?cinematic,night,city"
+    
+    function goNext(){
+  window.location.href ="./Birthday.html";
+
+}function backpage(){
+  window.location.href="typing effects.html"
+}
+    
+    
+  </script>
+
+</body>
+</html>
