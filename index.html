@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+    <title>happy birth day bro </title>
+    <style>
+    body{
+      text-align: center;
+      justify-content: center;
+      height: 100vh;
+     background: linear-gradient(to right,#00c6ff,#0072ff);
+     
+      
+    }
+                  .countdown-screen {
+
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+
+            height: 100vh; text-align: center; position: relative; z-index: 10;
+
+        }
+
+        .countdown-number {
+
+            font-size: 20rem; font-weight: bold; color: cyan; text-shadow: 0 0 20px blue,0 0 35px purple;
+
+            margin: 20px 0; animation: pulse 1s infinite;
+
+        }
+
+        @keyframes pulse {
+
+            0%, 100% { transform: scale(1); }
+
+            50% { transform: scale(1.2); }
+
+        }
+        
+/* Typing */
+#typing{
+  margin-top: 200px;
+  font-size: 40px;
+  text-align:center;
+}
+
+/* Button Neon */
+button{
+  padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg,gold,orange);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px gold;
+  margin-top:200px;
+}
+      .count{
+  background:aqua;
+  position:absolute;
+  
+}
+#count{
+  text-align:center;
+  justify-content:center;
+  color:pink;
+  margin-top:350px;
+  font-size:100px;
+}
+    </style>
+  </head>
+
+
+<body>
+
+<h1 id="count">3</h1>
+
+<!-- முதலில் button hide -->
+<button id="nextBtn" onclick="nextPage()" style="display:none;">
+  Next
+</button>
+<a href="page2.html">
+  <button>next</button>
+</a>
+<script>
+
+let num = 3;
+
+let timer = setInterval(() => {
+
+  num--;
+
+  document.getElementById("count").innerHTML = num;
+
+  // countdown முடிந்ததும்
+  if(num <= 0){
+
+    clearInterval(timer);
+
+    document.getElementById("count").innerHTML = "GO 🔥";
+
+    // button show
+    document.getElementById("nextBtn").style.display = "inline-block";
+  }
+
+},1000);
+
+
+function nextPage(){
+
+  window.location.href = "typing effects.html";
+
+}
+
+</script>
