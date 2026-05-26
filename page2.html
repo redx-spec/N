@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>typing effect</title>
+    <style>
+      /* Typing */
+#typing{
+  margin-top: 200px;
+  font-size: 40px;
+  text-align:center;
+  font-family:Georgia;
+      background: linear-gradient(to right,pink,cyan);
+    -webkit-text-fill-color:transparent;
+    -webkit-background-clip:text;
+}
+body{
+        background: linear-gradient(to left,white,powderblue);
+  
+  justify-content: center;
+  text-align: center;
+  margin-top: 350px;
+}
+.btn{
+        margin-top: 250px;
+      transform: translatex(-20px);
+  padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg,gold,orange);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px gold;
+  margin-top:70px;
+}
+.btw{
+  margin-top: 250px;
+      transform: translatex(-10px);
+  padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg,gold,orange);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px gold;
+  margin-top:70px;
+}
+    </style>
+  </head>
+
+<body>
+
+ <!-- Phase 1 -->
+<div id="phase1">
+  <h1 id="typing"></h1>
+  
+</div>
+<button class="btn"onclick="backpage()">back</button>
+<button class="btw"onclick="goNext()">next</button>
+  <a href="page3.html">
+    <button>next</button>
+  </a>
+ <script>
+ // Typing Animation
+let text = "Happy Birthday coach🎉";
+let i = 0;
+
+function typingEffect(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typingEffect, 100);
+  }else{
+    document.getElementById("startBtn").style.display = "inline-block";
+  }
+}
+
+typingEffect();
+
+function backpage(){
+  window.location.href="Countdown effects.html"
+}
+function goNext(){
+  window.location.href ="./5dphoto.html";
+
+}
+</script>
+</body>
+</html>
